@@ -31,27 +31,27 @@ services:
             -  { name: dz.feature_flags.toggle.condition, alias: hostname }
 
     dz.feature_flags.toggle.condition.percentage:
+        autowire: true
         class: DZunke\FeatureFlagsBundle\Toggle\Conditions\Percentage
-        arguments: ["@request"]
         calls:
             - [setContext, ["@dz.feature_flags.context"]]
         tags:
             -  { name: dz.feature_flags.toggle.condition, alias: percentage }
 
     dz.feature_flags.toggle.condition.device:
-            class: DZunke\FeatureFlagsBundle\Toggle\Conditions\Device
-            arguments: ["@request"]
-            calls:
-                - [setContext, ["@dz.feature_flags.context"]]
-            tags:
-                -  { name: dz.feature_flags.toggle.condition, alias: device }
+        autowire: true
+        class: DZunke\FeatureFlagsBundle\Toggle\Conditions\Device
+        calls:
+            - [setContext, ["@dz.feature_flags.context"]]
+        tags:
+            -  { name: dz.feature_flags.toggle.condition, alias: device }
 
     dz.feature_flags.toggle.condition.date:
-            class: DZunke\FeatureFlagsBundle\Toggle\Conditions\Date
-            calls:
-                - [setContext, ["@dz.feature_flags.context"]]
-            tags:
-                -  { name: dz.feature_flags.toggle.condition, alias: date }
+        class: DZunke\FeatureFlagsBundle\Toggle\Conditions\Date
+        calls:
+            - [setContext, ["@dz.feature_flags.context"]]
+        tags:
+            -  { name: dz.feature_flags.toggle.condition, alias: date }
 
     dz.feature_flags.twig.feature_extension:
         class: DZunke\FeatureFlagsBundle\Twig\FeatureExtension
